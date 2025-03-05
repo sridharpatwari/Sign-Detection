@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignSpeak - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://cdn.pixabay.com/photo/2022/03/28/03/45/sign-language-7096475_1280.png');
+            display: left;
+            flex-direction: column;
+            padding: 5rem 10rem;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .signup-container p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #000;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #5c67f2;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #4e59c8;
+        }
+
+        .alternative-option {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .alternative-option a {
+            color: #5c67f2;
+            text-decoration: none;
+        }
+
+        .alternative-option a:hover {
+            text-decoration: underline;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <p>Create an account to get started.</p>
+        <form id="signupForm">
+            <input autocomplete="off" placeholder="Username" class="input-field" type="text" id="newUsername" required>
+            <input placeholder="Password" class="input-field" type="password" id="newPassword" required>
+            <input placeholder="Confirm Password" class="input-field" type="password" id="confirmPassword" required>
+            <button class="btn-primary" type="submit">Sign Up</button>
+        </form>
+        <p class="alternative-option">
+            Already have an account? 
+            <a href="login.html">Login</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('newUsername').value.trim();
+            const password = document.getElementById('newPassword').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Check if username exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.username === username);
+
+            if (userExists) {
+                alert('Username already exists. Please choose another one.');
+                return;
+            }
+
+            // Save user
+            users.push({ username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Sign-Up successful! You can now log in.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignSpeak - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home Page -->
+    <div class="home-page" id="homePage">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="logo" onclick="showHome()">
+                    <span class="logo-text">SignSpeak</span>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <h1>Sign Language Detection Made Easy</h1>
+            <p>Break communication barriers with our real-time sign language detection technology</p>
+            <button class="btn" onclick="showTutorials()">Get Started</button>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👋</div>
+                    <h3>Real-Time Detection</h3>
+                    <p>Instantly detect and translate sign language gestures using your webcam</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Learn Sign Language</h3>
+                    <p>Learn ASL sign language through our description provided</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Advanced machine learning algorithms for accurate gesture recognition</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community Support</h3>
+                    <p>Connect with other learners and native signers</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showTutorials() {
+            window.location.href = 'tutorials.html'; // Redirects to the tutorials page
+        }
+    </script>
+</body>
+</html>
